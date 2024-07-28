@@ -1,0 +1,228 @@
+
+
+nyu = {}
+function nyu_setup() {
+	nyu.now_oa = 0;
+	nyu.now_ob = 0;
+	nyu.now_og = 0;
+	nyu.now_mx = 0;
+	nyu.now_my = 0;
+	nyu.now_mz = 0;
+	nyu.now_hx = 0;
+	nyu.now_hy = 0;
+	nyu.now_edhy = 0;
+
+	nyu.now_tx = 0;
+	nyu.now_ty = 0;
+	nyu.bef_tx = 0;
+	nyu.bef_ty = 0;
+	nyu.diff_tx = 0;
+	nyu.diff_ty = 0;
+	nyu.sta_tx = 0;
+	nyu.sta_ty = 0;
+	nyu.end_tx = 0;
+	nyu.end_ty = 0;
+	nyu.tdir4 = 0;
+
+	nyu.puramai = 1;
+	nyu.door_mspd = 0;
+	nyu.is_door_open = false;	
+	nyu.door_mspd_amari = 0;
+	nyu.door_mspd_amari2 = 0;
+
+	nyu.cc_door_openchu = 0;
+	nyu.cc_door_closechu = 0;
+	nyu.cc_forsavemode = 0;
+	nyu.cc_press = 0;
+
+}
+
+
+function nyu_ef() {
+	
+	// if (nyu.cc_forsavemode==2000 ) {
+		// if (ososos=="pc") pixelDensity(0.3);
+		// else pixelDensity(0.3);
+		// frameRate(7)
+	// }
+
+
+	nyu_kihon();
+	if (!is_kyoseiakanai) {
+		if (is_press) {
+			
+				if ( Math.abs(nyu.diff_ty) > Math.abs(nyu.diff_tx)) {
+					nyu.tdir4 = (nyu.bef_ty < nyu.now_ty) ? true : false;
+					nyu.door_mspd = nyu.diff_ty;
+				} else if ( Math.abs(nyu.diff_tx) > Math.abs(nyu.diff_ty)) {
+					nyu.tdir4 = (nyu.bef_tx > nyu.now_tx) ? true : false;
+					nyu.door_mspd = -nyu.diff_tx;
+				}
+			// nyu.door_mspd = nyu.diff_ty;
+		}
+
+		if (is_autoclose) {
+			nyu.puramai = 1;
+			nyu.tdir4 = false;
+			nyu.door_mspd = -66;
+		}
+
+	}
+
+
+
+	if (nyu.door_mspd > 222) nyu.door_mspd = 222;
+	else if (nyu.door_mspd < -222) nyu.door_mspd = -222;
+
+
+	nyu.door_mspd *= 0.98;
+	let _door_mspd_edit = nyu.door_mspd / 611 * nyu.puramai;
+	// // openclosev = qb.mTriangle(tm)/2+.5;
+	door_openclose_v += _door_mspd_edit;
+	// door_openclose_v = sineha;
+	
+
+	if (door_openclose_v<0) {
+		
+		door_openclose_v = 0;
+		nyu.puramai = 1;
+		nyu.door_mspd_amari = Math.abs(nyu.door_mspd/3);
+		nyu.door_mspd_amari2 = Math.abs(nyu.door_mspd*5.33);
+		nyu.door_mspd = 0;
+	}
+	if (door_openclose_v>1) {
+		door_openclose_v = 1;
+		if (!is_press) {
+			nyu.puramai = -1;
+			nyu.door_mspd *= .6;
+		}
+	}
+	if (is_press && nyu.tdir4 && door_openclose_v <= .3) {
+		if (!nyu.is_door_open) {
+			nyu.is_door_open = true;
+			oto_dooropen(_door_mspd_edit)
+		}
+	}
+	if (_door_mspd_edit <0 && door_openclose_v <= .02) {
+		if (nyu.is_door_open) {
+			nyu.is_door_open = false;
+			oto_doorclose( _door_mspd_edit)
+			autoclosetime = Math.round( (800 - (Math.random()*Math.random())*750)*2.0 )
+		}
+	}
+	nyu.door_mspd_amari *= .82
+	nyu.door_mspd_amari2 *= .89
+	if (nyu.door_mspd_amari2>18) nyu.door_mspd_amari2 = 18
+
+
+	f_savemode_and_autodoor() 
+
+}
+
+function f_savemode_and_autodoor() {
+	// console.log(nyu.cc_forsavemode )
+	if (cc_no_savemode> 2131) is_autoclose = true
+	if (nyu.cc_door_openchu > autoclosetime) {
+		is_autoclose = true;
+	}
+	
+	if (nyu.is_door_open == false) {
+		
+		// console.log(autoclosetime);
+		is_autoclose = false;
+		nyu.cc_door_openchu = 0
+		nyu.cc_door_closechu += 1;
+		nyu.cc_forsavemode += 1;
+		if (nyu.cc_forsavemode == savemodetime ) {
+			f_savemode(true)
+		}
+		
+		if (cc_no_savemode > 2331) {
+			// f_savemode(true);
+		}
+	} else {
+		nyu.cc_door_openchu += 1;
+		nyu.cc_door_closechu = 0;
+		nyu.cc_forsavemode = 0;
+		if (is_savemode) {
+			f_savemode(false)
+		}
+	}
+	// console.log(nyu.cc_door_openchu);
+}
+
+
+function nyu_kihon() {
+	if (is_press) {
+		nyu.bef_tx = nyu.now_tx;
+		nyu.bef_ty = nyu.now_ty;
+		if (ososos=='pc') {
+			nyu.now_tx = mouseX;
+			nyu.now_ty = mouseY;
+		} else {
+			nyu.now_tx = touches[0].x;
+			nyu.now_ty = touches[0].y;
+		}
+		nyu.diff_tx = nyu.now_tx - nyu.bef_tx
+		nyu.diff_ty = nyu.now_ty - nyu.bef_ty
+	}
+	if (ososos=='pc') {
+
+		let _dist = Math.hypot(mouseX - nyu.now_hx, mouseY - nyu.now_hy);
+		if (_dist > 200) {
+			nyu.now_hx += (mouseX - nyu.now_hx) / 15
+			nyu.now_hy += (mouseY - nyu.now_hy) / 15
+		}
+		nyu.now_edhy = mouseY - nyu.now_hy;
+		if (nyu.now_edhy > 200) nyu.now_edhy = 200; 
+		else if (nyu.now_edhy < -200) nyu.now_edhy = -200; 
+		// nyu.now_hx = mouseX;
+		// nyu.now_hy = mouseY;
+	}
+}
+
+function mousePressed() {
+	if (ososos=='pc') {
+		f_usertouchstart();
+		nyu.now_tx = nyu.sta_tx = mouseX;
+		nyu.now_ty = nyu.sta_ty = mouseY;
+		nyu.puramai = 1;
+		is_press = true;
+		// nyu.cc_forsavemode = 0;
+		nyu.cc_press += 1;
+
+		if (is_savemode && nyu.cc_forsavemode > 0) {
+			nyu.cc_forsavemode = 0;
+			f_savemode(false)
+		}
+
+	}	
+}
+
+function mouseReleased() {
+	if (ososos == 'pc') {
+		is_press = false;
+	}
+}
+
+function touchStarted() {　
+	if (ososos != 'pc') { 
+		if (!is_user_started) f_usertouchstart();	
+		nyu.now_tx = nyu.sta_tx =  touches[0].x;
+		nyu.now_ty = nyu.sta_ty = touches[0].y;
+		nyu.puramai = 1;
+		is_press = true;
+		nyu.cc_press += 1;
+
+		if (is_savemode && nyu.cc_forsavemode > 0) {
+			nyu.cc_forsavemode = 0;
+			f_savemode(false)
+		}
+
+	}
+}
+function touchEnded(){
+	if (ososos != 'pc') {
+		is_press = false;
+	}
+}
