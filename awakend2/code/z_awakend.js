@@ -56,7 +56,7 @@ let aaa = (sin(frameCount / 45) + 1) / 2;
 
 		this.apeyeopen = [
 			{ x: -132, y:0, ctr1x: 0, ctr1y: 0, ctr2x: 0, ctr2y: 0  },
-			{ x: 0, y: -90+this.mabutanokatati[0]+aaa*13, ctr1x: -122, ctr1y: 0, ctr2x: 122, ctr2y: 0  },
+			{ x: 0, y: -90+this.mabutanokatati[0]+aaa*9, ctr1x: -122, ctr1y: 0, ctr2x: 122, ctr2y: 0  },
 			{ x: 132, y: 11, ctr1x: 0, ctr1y: 0, ctr2x: 0, ctr2y: 20  },
 			{ x: 0, y: 95, ctr1x: 142, ctr1y: 0, ctr2x: -142, ctr2y: 0  },
 			{ x: -132, y:0, ctr1x: 0, ctr1y: 0, ctr2x: 0, ctr2y: 0  }

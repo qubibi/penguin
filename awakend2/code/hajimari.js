@@ -60,13 +60,13 @@ function draw() {
 	if (is_slow) {
 		ccslow++;
 		ccslow %= 8;
-		slowmusicmag += (0.2 - slowmusicmag)/2
+		slowmusicmag += (0.2 - slowmusicmag)/5
 	} else {
 		ccslow = 0;
 		
 	}
 	if( ccslow == 0) {
-		if (!is_slow)slowmusicmag += (1-slowmusicmag)/2
+		if (!is_slow)slowmusicmag += (1-slowmusicmag)/3
 
 		tf = !tf;
 
