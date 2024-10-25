@@ -887,7 +887,7 @@ class SnMusic {
 	updateMusicVolume() {
 		// Update volume based on globalOpenclosev
 		// this.targetMusicVolume = globalOpenclosev >= 0.5 ? this.maxMusicVolume: 0;//this.maxMusicVolume
-		this.musicVolume = lerp(this.musicVolume, this.targetMusicVolume, this.musicVolumeLerpFactor);
+		this.musicVolume = lerp(this.musicVolume, this.targetMusicVolume*slowmusicmag, this.musicVolumeLerpFactor);
 		// Update pitch target based on globalOpenclosev
 		// this.musicPitchTarget = globalOpenclosev > 0 ? 1 : 0.5;
 

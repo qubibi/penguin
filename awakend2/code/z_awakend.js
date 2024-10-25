@@ -50,13 +50,16 @@ class Z_awakend {
 let wave1 = (sin(frameCount/(20 + sin(frameCount/19)*1)) + sin(frameCount/(50 + sin(frameCount/71)*1.6))) * 0.5;
 let wave2 = (sin(frameCount/(20 + sin(frameCount/28)*2)) + sin(frameCount/(50 + sin(frameCount/89)*3))) * 0.5;
 
+let aaa = (sin(frameCount / 45) + 1) / 2;
+
+
 
 		this.apeyeopen = [
-			{ x: -132, y:0+10*wave2, ctr1x: 0, ctr1y: 0, ctr2x: 0, ctr2y: 0  },
-			{ x: 0, y: -90+this.mabutanokatati[0], ctr1x: -122, ctr1y: 0, ctr2x: 122, ctr2y: 0  },
-			{ x: 132, y: 11+15*wave1, ctr1x: 0, ctr1y: 0, ctr2x: 0, ctr2y: 20  },
+			{ x: -132, y:0, ctr1x: 0, ctr1y: 0, ctr2x: 0, ctr2y: 0  },
+			{ x: 0, y: -90+this.mabutanokatati[0]+aaa*13, ctr1x: -122, ctr1y: 0, ctr2x: 122, ctr2y: 0  },
+			{ x: 132, y: 11, ctr1x: 0, ctr1y: 0, ctr2x: 0, ctr2y: 20  },
 			{ x: 0, y: 95, ctr1x: 142, ctr1y: 0, ctr2x: -142, ctr2y: 0  },
-			{ x: -132, y:0+10*wave2, ctr1x: 0, ctr1y: 0, ctr2x: 0, ctr2y: 0  }
+			{ x: -132, y:0, ctr1x: 0, ctr1y: 0, ctr2x: 0, ctr2y: 0  }
 		];
 		let aaaaa = 0//nnyu.dragmx/23
 		let bbbbb = 0//nnyu.dragmx/23

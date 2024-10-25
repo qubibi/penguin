@@ -54,14 +54,20 @@ function startAudioContextFornakaokasan() {
 }
 
 function draw() {
-	
+	cc_forslow++;
+	if (cc_forslow==1500) is_slow = true
+
 	if (is_slow) {
 		ccslow++;
 		ccslow %= 8;
+		slowmusicmag += (0.2 - slowmusicmag)/2
 	} else {
 		ccslow = 0;
+		
 	}
 	if( ccslow == 0) {
+		if (!is_slow)slowmusicmag += (1-slowmusicmag)/2
+
 		tf = !tf;
 
 		cc++;

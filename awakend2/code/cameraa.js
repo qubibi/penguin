@@ -37,7 +37,7 @@ class Cameraa {
 			this._r = this.ani1.aupdate(0.002, 0.0055, -0.2, 0.2,  67);
 			this._x = this.ani2.aupdate(0.1, 1, 66, -66,  67);
 			this._y = this.ani3.aupdate(0.1, 1, 0, -100,  67);
-			this._sc = this.ani4.aupdate(0.003, 0.007, 1.2, 1.7, 67);
+			this._sc = this.ani4.aupdate(0.003, 0.008, 1.2, 1.7, 67);
 			this._r2 = this.ani1.aupdate(0.005, 0.03, -0.1, 0.1,200);
 			this._x2 = this.ani5.aupdate(5, 30, -30, 30, 200);
 			// this._r = this.ani1.aupdate(0.002, 0.005, -0.2, 0.2,  67)  *(1-nnyu.pressv);

@@ -1,13 +1,12 @@
 let isgamen = true;
 let iscamera = true;
-// let isgamen = false;
-// let iscamera = false;
 let ismobile = false;
 let is_slow = false;
 let isSetupComplete = false;
 let is_tenjipre  = false;
 let ismusic = true; 
-
+let cc_forslow = 0;
+let slowmusicmag = 1;
 let ooto;
 let bbut;
 let ccam;

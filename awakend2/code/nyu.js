@@ -45,6 +45,8 @@ class Nyu {
 	}
 
 	f_mousedown() {
+		cc_forslow = 0;
+		is_slow = false;
 		if (!is_tenjipre) {
 			this.is_press = true;
 			this.pressspd = qb.rndm(0.7, 1.2);
