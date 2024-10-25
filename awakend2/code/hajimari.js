@@ -53,19 +53,22 @@ function startAudioContextFornakaokasan() {
   }
 }
 
-function draw() {
+function f_slowcheck() {
 	cc_forslow++;
-	if (cc_forslow==2500) is_slow = true
-
+	if (cc_forslow==2222) is_slow = true
 	if (is_slow) {
-		ccslow++;
-		ccslow %= 8;
-		slowmusicmag += (0.2 - slowmusicmag)/5
+		slowtime++;
+		slowtime %= slowtime_tgt;
+		if (slowtime==0 && slowtime_tgt<9) slowtime_tgt++
+		slowmusicmag += (0.075 - slowmusicmag)/9
 	} else {
-		ccslow = 0;
-		
+		slowtime = 0; slowtime_tgt = 1;
 	}
-	if( ccslow == 0) {
+}
+
+function draw() {
+	f_slowcheck()
+	if( slowtime == 0) {
 		if (!is_slow)slowmusicmag += (1-slowmusicmag)/3
 
 		tf = !tf;

@@ -373,7 +373,7 @@ class SnMusic {
 		let fileName = (randomIndex + 1).toString().padStart(2, '0') + '.mp3';
 		// let filePath = `assets/sounds/music/${fileName}`;
 		// console.log("randomIndex:", randomIndex);
-		let filePath = `assets/01m1extend.mp3`;
+		let filePath = `assets/01m1extend_m1.mp3`;
 		
 		// console.log(`Randomly selected music file: ${filePath}`);
 		this.loadMusic(filePath);

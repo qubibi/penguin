@@ -5,8 +5,7 @@ let is_slow = false;
 let isSetupComplete = false;
 let is_tenjipre  = false;
 let ismusic = true; 
-let cc_forslow = 0;
-let slowmusicmag = 1;
+
 let ooto;
 let bbut;
 let ccam;
@@ -65,7 +64,11 @@ let tf = false
 let cc = 0;
 let cc4 = 0;
 let cc100 = 0;
-let ccslow = 0;
+let slowtime = 0;
+let slowtime_tgt = 1;
+let cc_forslow = 0;
+let slowmusicmag = 1;
+
 
 let mmxx = 0;
 let mmyy = 0;
