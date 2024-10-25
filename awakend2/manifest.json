@@ -3,17 +3,17 @@
   "name": "Awakend",
   "icons": [
     {
-      "src": "/penguin/awakend/icons/icon-192x192.png",
+      "src": "/penguin/awakend2/icons/icon-192x192.png",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "/penguin/awakend/icons/icon-512x512.png",
+      "src": "/penguin/awakend2/icons/icon-512x512.png",
       "type": "image/png",
       "sizes": "512x512"
     }
   ],
-  "start_url": "/penguin/awakend/",
+  "start_url": "/penguin/awakend2/",
   "display": "fullscreen",
   "background_color": "#000000",
   "theme_color": "#000000"
