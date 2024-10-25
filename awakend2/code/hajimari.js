@@ -55,7 +55,7 @@ function startAudioContextFornakaokasan() {
 
 function draw() {
 	cc_forslow++;
-	if (cc_forslow==1500) is_slow = true
+	if (cc_forslow==2500) is_slow = true
 
 	if (is_slow) {
 		ccslow++;
