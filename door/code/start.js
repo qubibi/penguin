@@ -264,6 +264,7 @@ function f_savemode( _is) { // only for nyuryoku
 
 
 function f_usertouchstart() {
+	console.log(111);
 	// console.log("f_usertouchstart" )
 	if (!is_user_started) {
 		// userStartAudio();
