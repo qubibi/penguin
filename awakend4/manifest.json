@@ -1,19 +1,19 @@
 {
-  "short_name": "Awakend3",
-  "name": "Awakend3",
+  "short_name": "Awakend4",
+  "name": "Awakend4",
   "icons": [
     {
-      "src": "/penguin/awakend3/icons/icon-192x192.png",
+      "src": "/penguin/awakend4/icons/icon-192x192.png",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "/penguin/awakend3/icons/icon-512x512.png",
+      "src": "/penguin/awakend4/icons/icon-512x512.png",
       "type": "image/png",
       "sizes": "512x512"
     }
   ],
-  "start_url": "/penguin/awakend3/",
+  "start_url": "/penguin/awakend4/",
   "display": "fullscreen",
   "background_color": "#000000",
   "theme_color": "#000000"
