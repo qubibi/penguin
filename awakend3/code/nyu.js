@@ -159,7 +159,7 @@ class Nyu {
 		// if (this.is_awakend) this.openclosev_tgt = 0.5*this.pressv + qb.mppng(this.kasanmy*1.37, 0, 100, 0, 0.5);
 
 
-this.openclosev_tgt = 0.33*this.pressv+qb.mppng(this.kasanmy, 0, 500, 0, 0.66);
+this.openclosev_tgt = 0.33*this.pressv+qb.mppng(this.kasanmy, 0, 333, 0, 0.66);
 
 
 
