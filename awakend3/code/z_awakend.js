@@ -16,6 +16,7 @@ class Z_awakend {
 		this.kutiwww = [0,0]
 		this.dir_medama = 0;
 		this.dir_medamax = 0;
+		this.kuti_buwanbuwan = 0.66
 		this.tweset_insidecolor = [
 			{ frm:0,    col:"#ffffff2f" },
 			{ frm:100,    col:"#ffffff2f" },
@@ -140,6 +141,8 @@ let wave5 = (sin(frameCount/(15 + sin(frameCount/71)*1.5)) + sin(frameCount/(38 
 		
 		if (Math.random() < .66) this.kutiwww[0] = 0
 		if (Math.random() < .66) this.kutiwww[1] = 0
+		this.kuti_buwanbuwan = qb.rndm(0.3,0.95)
+		
 	}
 
 
@@ -196,7 +199,7 @@ let wave5 = (sin(frameCount/(15 + sin(frameCount/71)*1.5)) + sin(frameCount/(38 
 
 
 			_me.x += this.vt_hole_fortynyn[i].x = ( this.vt_hole_fortynyn[i].x + ( this.vt_holetgt[i].x - _me.x ) * this.magic1 )* (0.5+i*0.01); 
-			_me.y += this.vt_hole_fortynyn[i].y = ( this.vt_hole_fortynyn[i].y + ( this.vt_holetgt[i].y - _me.y ) * (0.45+1.5*this.magicmag +i*0.018) )* ((this.magic2+-0.5*this.magicmag)*(1-this.tienmag)+0.75*this.tienmag); 
+			_me.y += this.vt_hole_fortynyn[i].y = ( this.vt_hole_fortynyn[i].y + ( this.vt_holetgt[i].y - _me.y ) * (0.45+1.5*this.magicmag +i*0.018) )* ((this.magic2+-0.5*this.magicmag)*(1-this.tienmag)+this.kuti_buwanbuwan*this.tienmag); 
 			// _me.y += this.vt_hole_fortynyn[i].y = ( this.vt_hole_fortynyn[i].y + ( this.vt_holetgt[i].y - _me.y ) * (4.9 ) )* (.2); 
 
 		if(nnyu.is_press) this.tuno = qb.mppng(nnyu.dragmy, -300, 0, 1, 0);
